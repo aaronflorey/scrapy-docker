@@ -1,0 +1,21 @@
+version: "3"
+services:
+  scrapyd:
+    image: mochaka/scrapyd:latest
+    container_name: scrapyd
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data/scrapyd:/var/lib/scrapyd
+    restart: unless-stopped
+
+  keeper:
+    container_name: scrapykeeper
+    image: mochaka/scrapy-keeper:latest
+    ports:
+      - 5000:5000
+    volumes:
+      - ./data/scrapy-keeper:/data
+    environment:
+      TZ: Australia/Melbourne
+    command: scrapykeeper --no-auth -v --server=http://scrapyd:6800 --database-url=sqlite:///data/keeper.db
