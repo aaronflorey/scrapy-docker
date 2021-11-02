@@ -1,11 +1,12 @@
 FROM python:3.7-bullseye
 
 RUN apt-get update \
-    && apt-get install -y build-essential git gcc python3-dev musl-dev g++ python3-numpy  
+    && apt-get install -y build-essential git gcc python3-dev musl-dev g++ python3-numpy     \
+    && apk add --no-cache mariadb-dev
 
 RUN git clone https://github.com/aaronflorey/ScrapyKeeper.git /app
 WORKDIR /app
 
-RUN pip3 install .
+RUN pip3 install . && pip3 install mysqlclient
 
 RUN apt-get remove -y build-essential git gcc python3-dev musl-dev g++ python3-numpy  
