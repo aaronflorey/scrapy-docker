@@ -1,4 +1,4 @@
-FROM python:3.6-bullseye
+FROM python:3.9-bullseye
 
 COPY ./scrapyd.conf /etc/scrapyd/
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
