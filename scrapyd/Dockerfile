@@ -6,7 +6,7 @@ EXPOSE 6800
 
 RUN apt-get update && apt-get install -y build-essential python3-dev
 
-RUN pip3 install scrapyd dateparser scrapy tldextract pymongo python-slugify dateparser requests pycodestyle autopep8 yapf extruct chompjs unidecode
+RUN pip3 install scrapyd dateparser scrapy tldextract pymongo python-slugify dateparser requests pycodestyle autopep8 yapf extruct chompjs unidecode rdflib-jsonld
 
 
 
